@@ -15,4 +15,5 @@ phases:
       - echo Build completed
 artifacts:
   files:
-    - 'dist/**/*'
+    - '/**/*'
+  base-directory: dist
