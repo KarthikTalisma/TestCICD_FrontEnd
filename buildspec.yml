@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+      - echo Dependencies installed
+  build:
+    commands:
+      - echo Building the application...
+      - npm run build
+      - echo Build completed
+  artifacts:
+    files:
+      - 'dist/**/*'
