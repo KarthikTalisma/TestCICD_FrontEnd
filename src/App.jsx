@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import GaugeComponent from 'react-gauge-component';
 import './App.css'
 import { DataGrid } from '@mui/x-data-grid';
