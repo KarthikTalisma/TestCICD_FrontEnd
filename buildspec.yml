@@ -8,12 +8,20 @@ phases:
       - echo Installing source NPM dependencies...
       - npm install
       - echo Dependencies installed
+      - echo listing s3 bucket files
+      - aws s3 ls s3://karthik-test-cicd-frontend/ --recursive
   build:
     commands:
       - echo Building the application...
       - npm run build
       - echo Build completed
-artifacts:
-  files:
-    - '**/*'
-  base-directory: dist
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Listing build directory contents...
+      - ls -R dist
+      - echo Syncing build directory to S3 bucket...
+      - aws s3 sync dist/ s3://karthik-test-cicd-frontend/ --delete
+      - echo Sync completed
+      - echo Listing S3 bucket files after sync...
+      - aws s3 ls s3://karthik-test-cicd-frontend/ --recursive
